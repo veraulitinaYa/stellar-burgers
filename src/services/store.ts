@@ -8,6 +8,8 @@ import {
 
 const rootReducer = () => {}; // Заменить на импорт настоящего редьюсера
 
+
+//=========================== стор из заготовки===========================
 const store = configureStore({
   reducer: rootReducer,
   devTools: process.env.NODE_ENV !== 'production'
@@ -21,3 +23,5 @@ export const useDispatch: () => AppDispatch = () => dispatchHook();
 export const useSelector: TypedUseSelectorHook<RootState> = selectorHook;
 
 export default store;
+
+//=========================================================================
