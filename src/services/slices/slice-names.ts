@@ -1,5 +1,5 @@
-export const slice_one = 'slice_one';
-export const slice_two = 'slice_two';
+export const BURGER_CONSTRUCTOR_SLICE_NAME = 'burgerConstructorSlice';
+export const BURGER_INGREDIENT_SLICE_NAME = 'burgerIngredientSlice';
 export const slice_three = 'slice_three';
 export const slice_four = 'slice_four';
 export const slice_five = 'slice_five';
