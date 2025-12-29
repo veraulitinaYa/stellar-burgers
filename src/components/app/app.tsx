@@ -4,10 +4,16 @@ import styles from './app.module.css';
 
 import { AppHeader } from '@components';
 
+import { Routes, Route, useLocation } from 'react-router-dom';
+import { Modal } from '@components';
+
 const App = () => (
   <div className={styles.app}>
     <AppHeader />
-    <ConstructorPage />
+
+    <Routes>
+      <Route path='/' element={<ConstructorPage />} />
+    </Routes>
   </div>
 );
 
