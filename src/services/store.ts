@@ -1,5 +1,5 @@
-import { configureStore } from '@reduxjs/toolkit';
-import { combineReducers } from 'redux';
+import { configureStore, combineReducers } from '@reduxjs/toolkit';
+
 import { burgerIngredientReducer } from './burger-ingredient-files/burger-ingredient-slice';
 
 import {
@@ -9,11 +9,9 @@ import {
 } from 'react-redux';
 
 export const rootReducer = combineReducers({
-  ingredients: burgerIngredientReducer,
+  ingredients: burgerIngredientReducer
   // заменить на импорт настоящего редьюсера
 });
-
-
 
 //=========================== стор из заготовки===========================
 export const store = configureStore({

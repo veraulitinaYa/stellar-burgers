@@ -1,28 +1,28 @@
-import {createSlice} from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import { BURGER_INGREDIENT_SLICE_NAME } from '../slice-names';
 import { TIngredient, TConstructorIngredient } from '@utils-types';
 import { fetchIngredientThunk } from './burger-ingredient-thunk';
 
 //типизируем стейт
 export interface BurgerIngredientState {
-   ingredients: TIngredient[];
-   isLoading: boolean;
-   isFeteched: boolean;
-   error: string | null;
+  ingredients: TIngredient[];
+  isLoading: boolean;
+  isFetched: boolean;
+  error: string | null;
 }
 
 //начальное состояние
 const initialState: BurgerIngredientState = {
-    ingredients: [],
-    isLoading: false,
-    isFeteched: false,
-    error: null
-}
+  ingredients: [],
+  isLoading: false,
+  isFetched: false,
+  error: null
+};
 
 // слайс
 const burgerIngredientSlice = createSlice({
-    name: BURGER_INGREDIENT_SLICE_NAME,
-    initialState,
+  name: BURGER_INGREDIENT_SLICE_NAME,
+  initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
@@ -32,13 +32,13 @@ const burgerIngredientSlice = createSlice({
       })
       .addCase(fetchIngredientThunk.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.isFeteched = true;
+        state.isFetched = true;
         state.ingredients = action.payload;
         state.error = null;
       })
       .addCase(fetchIngredientThunk.rejected, (state, action) => {
         state.isLoading = false;
-        state.error = action.payload ?? 'Неизвестная ошибка';
+        state.error = action.error.message || 'Неизвестная ошибка';
       });
   }
 });
