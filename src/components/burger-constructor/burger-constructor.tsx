@@ -30,15 +30,12 @@ export const BurgerConstructor: FC = () => {
     if (!bun || orderRequest) return;
   };
   const closeOrderModal = () => {};
-  const price = useMemo(
-    () =>
-      (bun ? bun.price * 2 : 0) +
-      ingredients.reduce(
-        (s: number, v: TConstructorIngredient) => s + v.price,
-        0
-      ),
-    [bun, ingredients]
-  );
+const price = useMemo(
+  () =>
+    (bun?.price || 0) * 2 +
+    (Array.isArray(ingredients) ? ingredients.reduce((s: number, v: TConstructorIngredient) => s + (v.price || 0), 0) : 0),
+  [bun, ingredients]
+);
 
   // NEW: пример функции добавления ингредиента (можно использовать в handleAdd пропс)
   const handleAddIngredient = (ingredient: TConstructorIngredient) => {
