@@ -23,8 +23,6 @@ const App = () => {
 
       <Routes location={backgroundLocation || location}>
         <Route path='/' element={<ConstructorPage />} />
-
-
       </Routes>
 
       {backgroundLocation && (

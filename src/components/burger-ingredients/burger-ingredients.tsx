@@ -14,11 +14,13 @@ import {
 } from '../../services/burger-ingredient-files/burger-ingredient-selectors';
 import { useDispatch } from '../../services/store';
 import { fetchIngredientThunk } from '../../services/burger-ingredient-files/burger-ingredient-thunk';
+import { TIngredient } from '@utils-types';
+import { addIngredient } from '../../services/burger-constructor-slice';
 
 export const BurgerIngredients: FC = () => {
   /** TODO: взять переменные из стора */
 
-  const dispatch = useDispatch();
+  //const dispatch = useDispatch();
 
   const buns = useSelector(selectBuns);
   const mains = useSelector(selectMains);
@@ -71,6 +73,10 @@ export const BurgerIngredients: FC = () => {
       titleSaucesRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  // const handleAddIngredient = (ingredient: TIngredient) => {
+  //  dispatch(addIngredient(ingredient));
+  // };
+
   return (
     <BurgerIngredientsUI
       currentTab={currentTab}
@@ -84,6 +90,7 @@ export const BurgerIngredients: FC = () => {
       mainsRef={mainsRef}
       saucesRef={saucesRef}
       onTabClick={onTabClick}
+      //onAddIngredient={handleAddIngredient}
     />
   );
 };

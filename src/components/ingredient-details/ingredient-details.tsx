@@ -8,9 +8,7 @@ export const IngredientDetails: FC = () => {
   const { id } = useParams<{ id: string }>();
 
   const ingredientData = useSelector((state) =>
-    state.ingredients.ingredients.find(
-      (item) => item._id === id
-    )
+    state.ingredients.ingredients.find((item) => item._id === id)
   );
 
   if (!ingredientData) {
