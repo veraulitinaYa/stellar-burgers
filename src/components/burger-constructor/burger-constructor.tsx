@@ -4,7 +4,6 @@ import { BurgerConstructorUI } from '@ui';
 import { useDispatch } from 'react-redux';
 import { useSelector } from '../../services/store';
 import { RootState } from '../../services/store';
-import { addIngredient } from '../../services/burger-constructor-slice';
 
 export const BurgerConstructor: FC = () => {
   const dispatch = useDispatch(); // NEW
@@ -19,7 +18,7 @@ export const BurgerConstructor: FC = () => {
 
   // NEW: берём данные конструктора из Redux
   const { bun, ingredients } = useSelector(
-    (state: RootState) => state.constructor
+    (state: RootState) => state.burgerConstructor
   );
 
   const orderRequest = false;
@@ -37,10 +36,10 @@ const price = useMemo(
   [bun, ingredients]
 );
 
-  // NEW: пример функции добавления ингредиента (можно использовать в handleAdd пропс)
-  const handleAddIngredient = (ingredient: TConstructorIngredient) => {
-    dispatch(addIngredient(ingredient)); // NEW
-  }; // NEW
+
+//  const handleAddIngredient = (ingredient: TConstructorIngredient) => {
+//    dispatch(addIngredient(ingredient)); // NEW
+//  }; 
 
   //return null;
 

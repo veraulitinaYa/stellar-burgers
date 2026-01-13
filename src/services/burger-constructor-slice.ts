@@ -23,8 +23,12 @@ const burgerConstructorSlice = createSlice({
   reducers: {
     addIngredient: (state, action: PayloadAction<TIngredient>) => {
       if (action.payload.type === 'bun') {
+        console.log("Из слайса БУЛКА инфа по стейт" + JSON.stringify(state));
+        console.log("Из слайса БУЛКА инфа по payload" + JSON.stringify(action));
         state.bun = action.payload;
       } else {
+        console.log("Из слайса ИНГР инфа по стейт" + JSON.stringify(state));
+        console.log("Из слайса ИНГР инфа по payload" + JSON.stringify(action));
         state.ingredients.push({
           ...action.payload,
           id: nanoid()

@@ -11,7 +11,7 @@ import {
 
 export const rootReducer = combineReducers({
   ingredients: burgerIngredientReducer,
-  constructor: burgerConstructorReducer
+  burgerConstructor: burgerConstructorReducer
   // заменить на импорт настоящего редьюсера
 });
 

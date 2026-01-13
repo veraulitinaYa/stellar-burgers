@@ -12,6 +12,7 @@ export const BurgerIngredient: FC<TBurgerIngredientProps> = memo(
     const dispatch = useDispatch();
 
     const handleAdd = () => {
+      console.log("Смотрим ингредиент в бургер ингредиенте не ui" + JSON.stringify(ingredient));
       dispatch(addIngredient(ingredient));
     };
 
