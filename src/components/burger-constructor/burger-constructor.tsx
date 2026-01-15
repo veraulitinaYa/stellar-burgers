@@ -29,17 +29,21 @@ export const BurgerConstructor: FC = () => {
     if (!bun || orderRequest) return;
   };
   const closeOrderModal = () => {};
-const price = useMemo(
-  () =>
-    (bun?.price || 0) * 2 +
-    (Array.isArray(ingredients) ? ingredients.reduce((s: number, v: TConstructorIngredient) => s + (v.price || 0), 0) : 0),
-  [bun, ingredients]
-);
+  const price = useMemo(
+    () =>
+      (bun?.price || 0) * 2 +
+      (Array.isArray(ingredients)
+        ? ingredients.reduce(
+            (s: number, v: TConstructorIngredient) => s + (v.price || 0),
+            0
+          )
+        : 0),
+    [bun, ingredients]
+  );
 
-
-//  const handleAddIngredient = (ingredient: TConstructorIngredient) => {
-//    dispatch(addIngredient(ingredient)); // NEW
-//  }; 
+  //  const handleAddIngredient = (ingredient: TConstructorIngredient) => {
+  //    dispatch(addIngredient(ingredient)); // NEW
+  //  };
 
   //return null;
 

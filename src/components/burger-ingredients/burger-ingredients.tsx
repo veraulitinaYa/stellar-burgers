@@ -12,10 +12,6 @@ import {
   selectIngredientsLoading,
   selectIngredientsError
 } from '../../services/burger-ingredient-files/burger-ingredient-selectors';
-import { useDispatch } from '../../services/store';
-import { fetchIngredientThunk } from '../../services/burger-ingredient-files/burger-ingredient-thunk';
-import { TIngredient } from '@utils-types';
-import { addIngredient } from '../../services/burger-constructor-slice';
 
 export const BurgerIngredients: FC = () => {
   /** TODO: взять переменные из стора */

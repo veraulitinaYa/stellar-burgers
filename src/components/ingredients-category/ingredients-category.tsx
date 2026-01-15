@@ -17,21 +17,21 @@ export const IngredientsCategory = forwardRef<
   //  };
   const burgerConstructor = useSelector((state) => state.burgerConstructor);
 
-const ingredientsCounters = useMemo(() => {
-  const { bun, ingredients } = burgerConstructor;
+  const ingredientsCounters = useMemo(() => {
+    const { bun, ingredients } = burgerConstructor;
 
-  // FIXED: проверяем, что ingredients массив
-  const counters: { [key: string]: number } = {};
-  if (Array.isArray(ingredients)) {
-    ingredients.forEach((ingredient: TIngredient) => {
-      if (!counters[ingredient._id]) counters[ingredient._id] = 0;
-      counters[ingredient._id]++;
-    });
-  }
+    // FIXED: проверяем, что ingredients массив
+    const counters: { [key: string]: number } = {};
+    if (Array.isArray(ingredients)) {
+      ingredients.forEach((ingredient: TIngredient) => {
+        if (!counters[ingredient._id]) counters[ingredient._id] = 0;
+        counters[ingredient._id]++;
+      });
+    }
 
-  if (bun && bun._id) counters[bun._id] = 2;
-  return counters;
-}, [burgerConstructor]);
+    if (bun && bun._id) counters[bun._id] = 2;
+    return counters;
+  }, [burgerConstructor]);
 
   return (
     <IngredientsCategoryUI

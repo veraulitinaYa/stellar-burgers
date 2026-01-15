@@ -15,8 +15,6 @@ import {
 import { TBurgerIngredientUIProps } from './type';
 //import { addIngredient } from 'src/services/burger-constructor-slice';
 
-import { addIngredient } from '../../../services/burger-constructor-slice';
-
 export const BurgerIngredientUI: FC<TBurgerIngredientUIProps> = memo(
   ({ ingredient, count, handleAdd, locationState }) => {
     const { image, price, name, _id } = ingredient;

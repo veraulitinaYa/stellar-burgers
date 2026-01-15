@@ -7,6 +7,7 @@ import { AppHeader, IngredientDetails } from '@components';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { Modal } from '@components';
 import { useNavigate } from 'react-router-dom';
+import { OrderInfo } from '@components';
 
 const App = () => {
   const location = useLocation();
@@ -30,8 +31,30 @@ const App = () => {
           <Route
             path='/ingredients/:id'
             element={
-              <Modal title={''} onClose={handleClose}>
+              <Modal title={'Детали ингредиента'} onClose={handleClose}>
                 <IngredientDetails />
+              </Modal>
+            }
+          />
+
+          <Route
+            path='/profile/orders/:number'
+            element={
+              //<ProtectedRoute
+              // component={
+              <Modal title={''} onClose={handleClose}>
+                <OrderInfo />
+              </Modal>
+              // }
+              ///>
+            }
+          />
+
+          <Route
+            path='/feed/:number'
+            element={
+              <Modal title={''} onClose={handleClose}>
+                <OrderInfo />
               </Modal>
             }
           />

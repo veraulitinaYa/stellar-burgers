@@ -4,7 +4,7 @@ import { useDispatch } from '../../services/store';
 
 import { BurgerIngredientUI } from '@ui';
 import { TBurgerIngredientProps } from './type';
-import { addIngredient } from '../../services/burger-constructor-slice';
+import { addIngredient } from '../../services/burger-constructor-files/burger-constructor-slice';
 
 export const BurgerIngredient: FC<TBurgerIngredientProps> = memo(
   ({ ingredient, count }) => {
@@ -12,7 +12,10 @@ export const BurgerIngredient: FC<TBurgerIngredientProps> = memo(
     const dispatch = useDispatch();
 
     const handleAdd = () => {
-      console.log("Смотрим ингредиент в бургер ингредиенте не ui" + JSON.stringify(ingredient));
+      console.log(
+        'Смотрим ингредиент в бургер ингредиенте не ui' +
+          JSON.stringify(ingredient)
+      );
       dispatch(addIngredient(ingredient));
     };
 
