@@ -14,8 +14,8 @@ export const selectCurrentOrder = (state: RootState): TOrder | null =>
 export const selectIsLoading = (state: RootState): boolean =>
   state.order.isLoading;
 
-export const selectIsOrderSending = (state: RootState): boolean =>
-  state.order.orderRequestSending;
+export const selectIsOrderRequestSending = (state: RootState): boolean =>
+  state.order.isOrderRequestSending;
 
 export const selectOrderError = (state: RootState): string | null =>
   state.order.error;

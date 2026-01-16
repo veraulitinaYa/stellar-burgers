@@ -8,7 +8,7 @@ import { ORDER_SLICE_NAME } from '../slice-names';
 export interface OrderState {
   orders: TOrder[];
   currentOrderToShowinModal: TOrder | null;
-  orderRequestSending: boolean;
+  isOrderRequestSending: boolean;
   isLoading: boolean;
   error: string | null;
 }
@@ -16,7 +16,7 @@ export interface OrderState {
 const initialState: OrderState = {
   orders: [],
   currentOrderToShowinModal: null,
-  orderRequestSending: false,
+  isOrderRequestSending: false,
   isLoading: false,
   error: null
 };
@@ -32,17 +32,17 @@ export const orderSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(createOrderThunk.pending, (state) => {
-        state.orderRequestSending = true;
+        state.isOrderRequestSending = true;
         state.isLoading = true;
         state.error = null;
       })
       .addCase(createOrderThunk.fulfilled, (state, action) => {
-        state.orderRequestSending = false;
+        state.isOrderRequestSending = false;
         state.isLoading = false;
         state.currentOrderToShowinModal = action.payload.order;
       })
       .addCase(createOrderThunk.rejected, (state, action) => {
-        state.orderRequestSending = false;
+        state.isOrderRequestSending = false;
         state.isLoading = false;
         state.error = action.error.message || 'Неизвестная ошибка';
       })
