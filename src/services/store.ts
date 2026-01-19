@@ -10,13 +10,14 @@ import {
 } from 'react-redux';
 
 import { orderReducer } from './order-files/order-slice';
+import { userReducer } from './user-files/user-slice';
 
 export const rootReducer = combineReducers({
   ingredients: burgerIngredientReducer,
   burgerConstructor: burgerConstructorReducer,
   order: orderReducer,
-  feed: feedReducer
-  // заменить на импорт настоящего редьюсера
+  feed: feedReducer,
+ user: userReducer
 });
 
 //=========================== стор из заготовки===========================
