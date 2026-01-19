@@ -11,7 +11,7 @@ import { resetModalForNewOrder } from '../../services/order-files/order-slice';
 import { clearConstructor } from '../../services/burger-constructor-files/burger-constructor-slice';
 
 export const BurgerConstructor: FC = () => {
-  const dispatch = useDispatch(); 
+  const dispatch = useDispatch();
   /** TODO: взять переменные constructorItems, orderRequest и orderModalData из стора */
   //const constructorItems = {
   //   bun: {
@@ -30,23 +30,17 @@ export const BurgerConstructor: FC = () => {
 
   const onOrderClick = () => {
     if (!bun || orderRequest) return;
-  
-    const newOrder = [
-      bun._id,
-      ...ingredients.map((item) => item._id),
-      bun._id
-    ];
+
+    const newOrder = [bun._id, ...ingredients.map((item) => item._id), bun._id];
 
     dispatch(createOrderThunk(newOrder));
-    console.log ('Заказ отправлен');
+    console.log('Заказ отправлен');
   };
 
-
-    const closeOrderModal = () => {
+  const closeOrderModal = () => {
     dispatch(resetModalForNewOrder());
     dispatch(clearConstructor());
   };
-
 
   const price = useMemo(
     () =>

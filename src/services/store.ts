@@ -2,7 +2,7 @@ import { configureStore, combineReducers } from '@reduxjs/toolkit';
 
 import { burgerIngredientReducer } from './burger-ingredient-files/burger-ingredient-slice';
 import { burgerConstructorReducer } from './burger-constructor-files/burger-constructor-slice';
-
+import { feedReducer } from './feed-files/feed-slice';
 import {
   TypedUseSelectorHook,
   useDispatch as dispatchHook,
@@ -14,7 +14,8 @@ import { orderReducer } from './order-files/order-slice';
 export const rootReducer = combineReducers({
   ingredients: burgerIngredientReducer,
   burgerConstructor: burgerConstructorReducer,
-  order: orderReducer
+  order: orderReducer,
+  feed: feedReducer
   // заменить на импорт настоящего редьюсера
 });
 

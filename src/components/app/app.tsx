@@ -31,11 +31,10 @@ const App = () => {
       <AppHeader />
 
       <Routes location={backgroundLocation || location}>
-
         <Route path='/' element={<ConstructorPage />} />
         <Route path='/feed' element={<Feed />} />
 
-  <Route
+        <Route
           path='/login'
           element={
             <ProtectedRoute onlyUnAuth>
@@ -92,7 +91,6 @@ const App = () => {
         <Route path='*' element={<NotFound404 />} />
       </Routes>
 
-
       {backgroundLocation && (
         <Routes>
           <Route
@@ -108,13 +106,12 @@ const App = () => {
             path='/profile/orders/:number'
             element={
               <ProtectedRoute>
-              <Modal title={''} onClose={handleClose}>
-                <OrderInfo />
-              </Modal>
+                <Modal title={''} onClose={handleClose}>
+                  <OrderInfo />
+                </Modal>
               </ProtectedRoute>
-               
-      }
-    />
+            }
+          />
           <Route
             path='/feed/:number'
             element={

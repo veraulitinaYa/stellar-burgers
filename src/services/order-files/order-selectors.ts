@@ -1,12 +1,9 @@
 import { RootState } from '../../services/store';
 import { TOrder } from '../../utils/types';
 
-
-
 export const selectOrderState = (state: RootState) => state.order;
 
-export const selectOrders = (state: RootState): TOrder[] =>
-  state.order.orders;
+export const selectOrders = (state: RootState): TOrder[] => state.order.orders;
 
 export const selectCurrentOrder = (state: RootState): TOrder | null =>
   state.order.currentOrderToShowinModal;
