@@ -10,11 +10,14 @@ import {
 } from '@api';
 import { TRegisterData, TLoginData } from '@api';
 import { TUser } from '@utils-types';
+import { setCookie } from '../../utils/cookie';
 
 export const registerUserThunk = createAsyncThunk(
   'user/register',
   async (data: TRegisterData) => {
     const response = await registerUserApi(data);
+    // setCookie('accessToken', response.accessToken);
+    // localStorage.setItem('refreshToken', response.refreshToken);
     return response.user;
   }
 );
@@ -23,6 +26,8 @@ export const loginUserThunk = createAsyncThunk(
   'user/login',
   async (data: TLoginData) => {
     const response = await loginUserApi(data);
+    setCookie('accessToken', response.accessToken);
+    localStorage.setItem('refreshToken', response.refreshToken);
     return response.user;
   }
 );

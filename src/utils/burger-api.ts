@@ -163,7 +163,8 @@ export type TLoginData = {
 };
 
 export const loginUserApi = (data: TLoginData) =>
-  fetch(`${URL}/auth/login`, {
+{console.log('Внутри login user api');
+  return fetch(`${URL}/auth/login`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json;charset=utf-8'
@@ -175,6 +176,7 @@ export const loginUserApi = (data: TLoginData) =>
       if (data?.success) return data;
       return Promise.reject(data);
     });
+  }
 
 export const forgotPasswordApi = (data: { email: string }) =>
   fetch(`${URL}/password-reset`, {
@@ -223,7 +225,9 @@ export const updateUserApi = (user: Partial<TRegisterData>) =>
     body: JSON.stringify(user)
   });
 
-export const logoutApi = () =>
+export const logoutApi = () =>{
+  console.log('refreshToken' + localStorage.getItem('refreshToken'))
+
   fetch(`${URL}/auth/logout`, {
     method: 'POST',
     headers: {
@@ -233,3 +237,4 @@ export const logoutApi = () =>
       token: localStorage.getItem('refreshToken')
     })
   }).then((res) => checkResponse<TServerResponse<{}>>(res));
+}
