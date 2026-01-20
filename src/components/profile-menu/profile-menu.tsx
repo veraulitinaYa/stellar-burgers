@@ -8,15 +8,14 @@ import { logoutUserThunk } from '../../services/user-files/user-thunks';
 export const ProfileMenu: FC = () => {
   const { pathname } = useLocation();
 
-   const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
-const handleLogout = async () => {
+  const handleLogout = async () => {
     await dispatch(logoutUserThunk());
     console.log('Вышли');
     navigate('/login', { replace: true });
   };
-
 
   return <ProfileMenuUI handleLogout={handleLogout} pathname={pathname} />;
 };

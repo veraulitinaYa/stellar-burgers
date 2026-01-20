@@ -21,7 +21,6 @@ import { useDispatch } from '../../services/store';
 import { fetchIngredientThunk } from '../../services/burger-ingredient-files/burger-ingredient-thunk';
 import { getUserThunk } from '../../services/user-files/user-thunks';
 
-
 const App = () => {
   const location = useLocation();
   const backgroundLocation = location.state?.background;

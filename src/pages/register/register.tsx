@@ -1,7 +1,7 @@
 import { FC, SyntheticEvent, useState } from 'react';
 import { RegisterUI } from '@ui-pages';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from  '../../services/store';
+import { useDispatch } from '../../services/store';
 import { registerUserThunk } from '../../services/user-files/user-thunks';
 
 export const Register: FC = () => {
@@ -9,12 +9,12 @@ export const Register: FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleSubmit = (e: SyntheticEvent) => {
     e.preventDefault();
-     dispatch(registerUserThunk({ name: userName, email, password }));
+    dispatch(registerUserThunk({ name: userName, email, password }));
     navigate('/login');
   };
 

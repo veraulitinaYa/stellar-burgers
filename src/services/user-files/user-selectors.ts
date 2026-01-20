@@ -5,8 +5,7 @@ import { TUser } from '@utils-types';
 export const selectUserState = (state: RootState) => state.user;
 
 // текущий пользователь
-export const selectUser = (state: RootState): TUser | null =>
-  state.user.user;
+export const selectUser = (state: RootState): TUser | null => state.user.user;
 
 // флаг: проверена ли авторизация
 export const selectIsAuthChecked = (state: RootState): boolean =>

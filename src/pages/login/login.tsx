@@ -3,7 +3,6 @@ import { LoginUI } from '@ui-pages';
 import { useDispatch } from '../../services/store';
 import { loginUserThunk } from '../../services/user-files/user-thunks';
 
-
 export const Login: FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

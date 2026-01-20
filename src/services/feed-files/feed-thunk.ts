@@ -8,14 +8,11 @@ type TFeedPayload = {
   totalToday: number;
 };
 
-export const fetchFeedThunk = createAsyncThunk(
-  'feed/fetchFeed',
-  async () => {
-    const feed = await getFeedsApi();
-    console.log (feed);
-    return feed;
-  }
-);
+export const fetchFeedThunk = createAsyncThunk('feed/fetchFeed', async () => {
+  const feed = await getFeedsApi();
+  console.log(feed);
+  return feed;
+});
 
 export const getFeedOrderByNumberThunk = createAsyncThunk<TOrder[], number>(
   'feed/getOrderByNumber',

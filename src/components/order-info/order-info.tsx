@@ -13,13 +13,12 @@ import { AppDispatch } from '../../services/store';
 import { getFeedOrderByNumberThunk } from '../../services/feed-files/feed-thunk';
 import { useEffect } from 'react';
 
-
 export const OrderInfo: FC = () => {
   const orderData = useSelector(selectFeedCurrentOrder);
   const ingredients = useSelector(selectIngredients);
   const isLoading = useSelector(selectFeedIsLoading);
 
- const { number } = useParams();
+  const { number } = useParams();
   const dispatch = useDispatch();
 
   useEffect(() => {

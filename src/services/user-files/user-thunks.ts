@@ -35,20 +35,17 @@ export const getUserThunk = createAsyncThunk<TUser>(
   }
 );
 
-export const updateUserThunk = createAsyncThunk<
-  TUser,
-  Partial<TRegisterData>
->('user/updateUser', async (data) => {
-  const response = await updateUserApi(data);
-  return response.user;
-});
-
-export const logoutUserThunk = createAsyncThunk(
-  'user/logout',
-  async () => {
-    await logoutApi();
+export const updateUserThunk = createAsyncThunk<TUser, Partial<TRegisterData>>(
+  'user/updateUser',
+  async (data) => {
+    const response = await updateUserApi(data);
+    return response.user;
   }
 );
+
+export const logoutUserThunk = createAsyncThunk('user/logout', async () => {
+  await logoutApi();
+});
 
 export const forgotPasswordThunk = createAsyncThunk(
   'user/forgotPassword',

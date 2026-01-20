@@ -17,7 +17,7 @@ export const rootReducer = combineReducers({
   burgerConstructor: burgerConstructorReducer,
   order: orderReducer,
   feed: feedReducer,
- user: userReducer
+  user: userReducer
 });
 
 //=========================== стор из заготовки===========================

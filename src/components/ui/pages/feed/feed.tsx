@@ -13,12 +13,12 @@ export const FeedUI: FC<FeedUIProps> = memo(({ orders, handleGetFeeds }) => (
         Лента заказов
       </h1>
       <RefreshButton
- text='Обновить'
-  onClick={() => {
-    console.log('Refresh feed clicked');
-    handleGetFeeds();
-  }}
-  extraClass={'ml-30'}
+        text='Обновить'
+        onClick={() => {
+          console.log('Refresh feed clicked');
+          handleGetFeeds();
+        }}
+        extraClass={'ml-30'}
       />
     </div>
     <div className={styles.main}>
