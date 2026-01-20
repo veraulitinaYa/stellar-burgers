@@ -20,6 +20,7 @@ import { useEffect } from 'react';
 import { useDispatch } from '../../services/store';
 import { fetchIngredientThunk } from '../../services/burger-ingredient-files/burger-ingredient-thunk';
 import { getUserThunk } from '../../services/user-files/user-thunks';
+import { OrderModal } from '../order-modal/order-modal';
 
 const App = () => {
   const location = useLocation();
@@ -117,18 +118,14 @@ const App = () => {
             path='/profile/orders/:number'
             element={
               <ProtectedRoute>
-                <Modal title={''} onClose={handleClose}>
-                  <OrderInfo />
-                </Modal>
+                <OrderModal onClose={handleClose}/>
               </ProtectedRoute>
             }
           />
           <Route
             path='/feed/:number'
             element={
-              <Modal title={''} onClose={handleClose}>
-                <OrderInfo />
-              </Modal>
+ <OrderModal onClose={handleClose}/>
             }
           />
         </Routes>
