@@ -88,7 +88,7 @@ export const userSlice = createSlice({
 
       .addCase(logoutUserThunk.fulfilled, (state) => {
         state.user = null;
-        state.isAuthChecked = false;
+        state.isAuthChecked = true;
       })
 
       .addCase(forgotPasswordThunk.pending, (state) => {
