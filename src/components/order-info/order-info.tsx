@@ -15,7 +15,6 @@ import { useEffect } from 'react';
 
 
 export const OrderInfo: FC = () => {
-  /** TODO: взять переменные orderData и ingredients из стора */
   const orderData = useSelector(selectFeedCurrentOrder);
   const ingredients = useSelector(selectIngredients);
   const isLoading = useSelector(selectFeedIsLoading);
@@ -23,14 +22,12 @@ export const OrderInfo: FC = () => {
  const { number } = useParams();
   const dispatch = useDispatch();
 
-  // 🔧 FIX: загружаем заказ при открытии модалки / страницы
   useEffect(() => {
     if (number) {
       dispatch(getFeedOrderByNumberThunk(Number(number)));
     }
   }, [dispatch, number]);
 
-  /* Готовим данные для отображения */
   const orderInfo = useMemo(() => {
     if (!orderData || !ingredients.length) return null;
 

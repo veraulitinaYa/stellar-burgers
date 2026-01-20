@@ -16,6 +16,11 @@ import { ForgotPassword } from '@pages';
 import { ResetPassword } from '@pages';
 import { Profile } from '@pages';
 import { ProfileOrders } from '@pages';
+import { useEffect } from 'react';
+import { useDispatch } from '../../services/store';
+import { fetchIngredientThunk } from '../../services/burger-ingredient-files/burger-ingredient-thunk';
+import { getUserThunk } from '../../services/user-files/user-thunks';
+
 
 const App = () => {
   const location = useLocation();
@@ -25,6 +30,13 @@ const App = () => {
   const handleClose = () => {
     navigate(-1);
   };
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchIngredientThunk());
+    dispatch(getUserThunk());
+  }, []);
 
   return (
     <div className={styles.app}>
