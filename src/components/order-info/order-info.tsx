@@ -2,35 +2,20 @@ import { FC, useMemo } from 'react';
 import { Preloader } from '../ui/preloader';
 import { OrderInfoUI } from '../ui/order-info';
 import { TIngredient } from '@utils-types';
-import { useParams } from 'react-router-dom';
-import { getFeedOrderByNumberThunk } from '../../services/feed-files/feed-thunk';
-import {
-  selectFeedCurrentOrder,
-  selectFeedIsLoading
-} from '../../services/feed-files/feed-selectors';
-import { selectIngredients } from '../../services/burger-ingredient-files/burger-ingredient-selectors';
-import { useDispatch, useSelector } from '../../services/store';
-import { TOrder } from '@utils-types';
-import { useEffect } from 'react';
 
 export const OrderInfo: FC = () => {
-   const { number } = useParams<{ number: string }>();
-  const dispatch = useDispatch();
+  /** TODO: взять переменные orderData и ingredients из стора */
+  const orderData = {
+    createdAt: '',
+    ingredients: [],
+    _id: '',
+    status: '',
+    name: '',
+    updatedAt: 'string',
+    number: 0
+  };
 
-  // Заказ из feedSlice
-  const orderData: TOrder | null = useSelector(selectFeedCurrentOrder);
-  const isLoading = useSelector(selectFeedIsLoading);
-
-  // Все ингредиенты
-  const ingredients: TIngredient[] = useSelector(selectIngredients);
-
-  // Подгружаем заказ по номеру при монтировании
-  useEffect(() => {
-    if (number) {
-      dispatch(getFeedOrderByNumberThunk(Number(number)));
-    }
-  }, [dispatch, number]);
-
+  const ingredients: TIngredient[] = [];
 
   /* Готовим данные для отображения */
   const orderInfo = useMemo(() => {
@@ -75,12 +60,8 @@ export const OrderInfo: FC = () => {
   }, [orderData, ingredients]);
 
   if (!orderInfo) {
-    
-    
-console.log('Тут мы получаем null и дальше не идем' + orderInfo);
-   return <Preloader />;
-   
+    return <Preloader />;
   }
 
-  return <OrderInfoUI orderInfo={orderInfo}/>;
+  return <OrderInfoUI orderInfo={orderInfo} />;
 };
