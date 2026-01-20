@@ -56,7 +56,7 @@ export const forgotPasswordThunk = createAsyncThunk(
   'user/forgotPassword',
   async (data: { email: string }) => {
     await forgotPasswordApi(data);
-     localStorage.removeItem('refreshToken');
+    localStorage.removeItem('refreshToken');
     deleteCookie('accessToken');
   }
 );

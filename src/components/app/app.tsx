@@ -118,15 +118,13 @@ const App = () => {
             path='/profile/orders/:number'
             element={
               <ProtectedRoute>
-                <OrderModal onClose={handleClose}/>
+                <OrderModal onClose={handleClose} />
               </ProtectedRoute>
             }
           />
           <Route
             path='/feed/:number'
-            element={
- <OrderModal onClose={handleClose}/>
-            }
+            element={<OrderModal onClose={handleClose} />}
           />
         </Routes>
       )}
