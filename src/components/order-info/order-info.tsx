@@ -13,6 +13,7 @@ import { AppDispatch } from '../../services/store';
 import { getFeedOrderByNumberThunk } from '../../services/feed-files/feed-thunk';
 import { useEffect } from 'react';
 
+
 export const OrderInfo: FC = () => {
   const orderData = useSelector(selectFeedCurrentOrder);
   const ingredients = useSelector(selectIngredients);
@@ -72,5 +73,9 @@ export const OrderInfo: FC = () => {
     return <Preloader />;
   }
 
-  return <OrderInfoUI orderInfo={orderInfo} />;
-};
+  return (
+  <>
+    <OrderInfoUI orderInfo={orderInfo} />
+  </>
+);
+}

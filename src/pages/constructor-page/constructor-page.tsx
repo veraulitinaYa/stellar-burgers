@@ -17,12 +17,6 @@ export const ConstructorPage: FC = () => {
   const isLoading = useSelector(selectIngredientsLoading);
   const isFetched = useSelector(selectIngredientsFetched);
 
-  useEffect(() => {
-    if (!isFetched) {
-      dispatch(fetchIngredientThunk());
-    }
-  }, [dispatch, isFetched]);
-
   if (isLoading) {
     return <Preloader />;
   }

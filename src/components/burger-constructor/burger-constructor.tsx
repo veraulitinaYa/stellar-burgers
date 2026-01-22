@@ -35,11 +35,11 @@ export const BurgerConstructor: FC = () => {
 
     dispatch(createOrderThunk(newOrder));
     console.log('Заказ отправлен');
+    dispatch(clearConstructor());
   };
 
   const closeOrderModal = () => {
     dispatch(resetModalForNewOrder());
-    dispatch(clearConstructor());
   };
 
   const price = useMemo(
