@@ -34,15 +34,15 @@ const App = () => {
 
   const dispatch = useDispatch();
 
- const feedMatch = useMatch('/feed/:number');
-const profileOrderMatch = useMatch('/profile/orders/:number');
+  const feedMatch = useMatch('/feed/:number');
+  const profileOrderMatch = useMatch('/profile/orders/:number');
 
-const orderNumber =
-  feedMatch?.params.number || profileOrderMatch?.params.number;
+  const orderNumber =
+    feedMatch?.params.number || profileOrderMatch?.params.number;
 
-const formattedOrderNumber = orderNumber
-  ? String(orderNumber).padStart(6, '0')
-  : '';
+  const formattedOrderNumber = orderNumber
+    ? String(orderNumber).padStart(6, '0')
+    : '';
 
   useEffect(() => {
     dispatch(fetchIngredientThunk());
@@ -111,43 +111,43 @@ const formattedOrderNumber = orderNumber
           }
         />
 
-<Route
-  path='/ingredients/:id'
-  element={
-    <div className={styles.ingredientPage}>
-      <p className="text text_type_main-large mb-5 text_align_center">
-        Детали ингредиента
-      </p>
-      <IngredientDetails />
-    </div>
-  }
-/>
-        
         <Route
-  path='/feed/:number'
-  element={
-    <div className={styles.orderPage}>
-      <p className='text text_type_digits-default mb-10 '>
-        #{formattedOrderNumber}
-      </p>
-      <OrderInfo />
-    </div>
-  }
-/>
+          path='/ingredients/:id'
+          element={
+            <div className={styles.ingredientPage}>
+              <p className='text text_type_main-large mb-5 text_align_center'>
+                Детали ингредиента
+              </p>
+              <IngredientDetails />
+            </div>
+          }
+        />
 
-<Route
-  path="/profile/orders/:number"
-  element={
-    <ProtectedRoute>
-      <div className={styles.orderPage}>
-        <p className="text text_type_digits-default text_align_center mb-10">
-          #{formattedOrderNumber}
-        </p>
-        <OrderInfo />
-      </div>
-    </ProtectedRoute>
-  }
-/>
+        <Route
+          path='/feed/:number'
+          element={
+            <div className={styles.orderPage}>
+              <p className='text text_type_digits-default mb-10 '>
+                #{formattedOrderNumber}
+              </p>
+              <OrderInfo />
+            </div>
+          }
+        />
+
+        <Route
+          path='/profile/orders/:number'
+          element={
+            <ProtectedRoute>
+              <div className={styles.orderPage}>
+                <p className='text text_type_digits-default text_align_center mb-10'>
+                  #{formattedOrderNumber}
+                </p>
+                <OrderInfo />
+              </div>
+            </ProtectedRoute>
+          }
+        />
         <Route path='*' element={<NotFound404 />} />
       </Routes>
 
@@ -167,16 +167,18 @@ const formattedOrderNumber = orderNumber
             element={
               <ProtectedRoute>
                 <Modal title={`#${formattedOrderNumber}`} onClose={handleClose}>
-                <OrderInfo />
-              </Modal>
+                  <OrderInfo />
+                </Modal>
               </ProtectedRoute>
             }
           />
           <Route
             path='/feed/:number'
-            element={ <Modal title={`#${formattedOrderNumber}`} onClose={handleClose}>
+            element={
+              <Modal title={`#${formattedOrderNumber}`} onClose={handleClose}>
                 <OrderInfo />
-              </Modal>}
+              </Modal>
+            }
           />
         </Routes>
       )}
