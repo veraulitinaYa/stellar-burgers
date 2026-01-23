@@ -9,6 +9,10 @@ import { selectCurrentOrder } from '../../services/order-files/order-selectors';
 import { createOrderThunk } from '../../services/order-files/order-thunks';
 import { resetModalForNewOrder } from '../../services/order-files/order-slice';
 import { clearConstructor } from '../../services/burger-constructor-files/burger-constructor-slice';
+import { selectUser } from '../../services/user-files/user-selectors';
+import { selectIsAuthChecked } from '../../services/user-files/user-selectors';
+import { useNavigate } from 'react-router-dom';
+import { Preloader } from '../ui/preloader';
 
 export const BurgerConstructor: FC = () => {
   const dispatch = useDispatch();
@@ -28,8 +32,19 @@ export const BurgerConstructor: FC = () => {
 
   const orderModalData = useSelector(selectCurrentOrder);
 
+  const user = useSelector(selectUser);
+  const isAuthChecked = useSelector(selectIsAuthChecked);
+  const navigate = useNavigate();
+
   const onOrderClick = () => {
     if (!bun || orderRequest) return;
+
+    if (!isAuthChecked) return <Preloader />;
+
+    if (!user) {
+      navigate('/login', { state: { from: '/' } });
+      return;
+    }
 
     const newOrder = [bun._id, ...ingredients.map((item) => item._id), bun._id];
 
