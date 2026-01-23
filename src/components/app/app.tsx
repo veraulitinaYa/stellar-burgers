@@ -21,6 +21,7 @@ import { useDispatch } from '../../services/store';
 import { fetchIngredientThunk } from '../../services/burger-ingredient-files/burger-ingredient-thunk';
 import { getUserThunk } from '../../services/user-files/user-thunks';
 import { OrderModal } from '../order-modal/order-modal';
+import { useMatch } from 'react-router-dom';
 
 const App = () => {
   const location = useLocation();
@@ -32,6 +33,16 @@ const App = () => {
   };
 
   const dispatch = useDispatch();
+
+ const feedMatch = useMatch('/feed/:number');
+const profileOrderMatch = useMatch('/profile/orders/:number');
+
+const orderNumber =
+  feedMatch?.params.number || profileOrderMatch?.params.number;
+
+const formattedOrderNumber = orderNumber
+  ? String(orderNumber).padStart(6, '0')
+  : '';
 
   useEffect(() => {
     dispatch(fetchIngredientThunk());
@@ -99,17 +110,44 @@ const App = () => {
             </ProtectedRoute>
           }
         />
- <Route path='/ingredients/:id' element={<IngredientDetails />} />
-        <Route path='/feed/:number' element={<OrderInfo />} />
 
+<Route
+  path='/ingredients/:id'
+  element={
+    <div className={styles.ingredientPage}>
+      <p className="text text_type_main-large mb-5 text_align_center">
+        Детали ингредиента
+      </p>
+      <IngredientDetails />
+    </div>
+  }
+/>
+        
         <Route
-          path='/profile/orders/:number'
-          element={
-            <ProtectedRoute>
-              <OrderInfo />
-            </ProtectedRoute>
-          }
-        />
+  path='/feed/:number'
+  element={
+    <div className={styles.orderPage}>
+      <p className='text text_type_digits-default mb-10 '>
+        #{formattedOrderNumber}
+      </p>
+      <OrderInfo />
+    </div>
+  }
+/>
+
+<Route
+  path="/profile/orders/:number"
+  element={
+    <ProtectedRoute>
+      <div className={styles.orderPage}>
+        <p className="text text_type_digits-default text_align_center mb-10">
+          #{formattedOrderNumber}
+        </p>
+        <OrderInfo />
+      </div>
+    </ProtectedRoute>
+  }
+/>
         <Route path='*' element={<NotFound404 />} />
       </Routes>
 
@@ -128,7 +166,7 @@ const App = () => {
             path='/profile/orders/:number'
             element={
               <ProtectedRoute>
-                 <Modal title={''} onClose={handleClose}>
+                <Modal title={`#${formattedOrderNumber}`} onClose={handleClose}>
                 <OrderInfo />
               </Modal>
               </ProtectedRoute>
@@ -136,7 +174,7 @@ const App = () => {
           />
           <Route
             path='/feed/:number'
-            element={ <Modal title={''} onClose={handleClose}>
+            element={ <Modal title={`#${formattedOrderNumber}`} onClose={handleClose}>
                 <OrderInfo />
               </Modal>}
           />

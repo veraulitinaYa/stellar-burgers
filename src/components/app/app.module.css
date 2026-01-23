@@ -26,3 +26,20 @@
 .detailHeader {
   text-align: center;
 }
+
+p {
+  text-align: center;
+
+}
+
+.ingredientPage {
+  max-width: 640px;
+  margin: 0 auto;
+  padding-top: 120px;
+}
+
+.orderPage {
+  max-width: 640px;
+  margin: 0 auto;
+  padding-top: 120px;
+}
