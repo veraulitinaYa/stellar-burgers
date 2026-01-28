@@ -2,6 +2,10 @@ import React, { FC, memo } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './burger-ingredient.module.css';
 
+import { useDispatch } from 'react-redux';
+
+import { TIngredient } from '@utils-types';
+
 import {
   Counter,
   CurrencyIcon,
@@ -9,10 +13,20 @@ import {
 } from '@zlden/react-developer-burger-ui-components';
 
 import { TBurgerIngredientUIProps } from './type';
+//import { addIngredient } from 'src/services/burger-constructor-slice';
 
 export const BurgerIngredientUI: FC<TBurgerIngredientUIProps> = memo(
   ({ ingredient, count, handleAdd, locationState }) => {
     const { image, price, name, _id } = ingredient;
+
+    // NEW: создаём dispatch
+    //  const dispatch = useDispatch(); // NEW
+
+    // NEW: функция добавления ингредиента в конструктор
+    // const handleAddIngredient = (ingredient: TIngredient) => {
+    // NEW
+    //    dispatch(addIngredient(ingredient)); // NEW
+    //  }; // NEW
 
     return (
       <li className={styles.container}>
