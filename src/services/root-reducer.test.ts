@@ -15,7 +15,7 @@ describe('тест - rootReducer - undefined state и unknown action', () => {
   });
 });
 
-describe('тестrootReducer - проверка initial state', () => {
+describe('тест - rootReducer - проверка initial state', () => {
   it('rootReducer возвращает корректное начальное состояние всех слайсов', () => {
     const state = rootReducer(undefined, unknownAction);
 
