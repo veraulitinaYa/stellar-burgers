@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">66.66% </span>
+                <span class="strong">91.3% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>46/69</span>
+                <span class='fraction'>63/69</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>15/15</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">66.66% </span>
+                <span class="strong">91.3% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>46/69</span>
+                <span class='fraction'>63/69</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -149,41 +149,41 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -218,41 +218,41 @@ import { deleteCookie, setCookie } from '../../utils/cookie';
 export const registerUserThunk = createAsyncThunk(
   'user/register',
   async (data: TRegisterData) =&gt; {
-<span class="cstat-no" title="statement not covered" >    const response = await registerUserApi(data);</span>
-<span class="cstat-no" title="statement not covered" >    setCookie('accessToken', response.accessToken);</span>
-<span class="cstat-no" title="statement not covered" >    localStorage.setItem('refreshToken', response.refreshToken);</span>
-<span class="cstat-no" title="statement not covered" >    return response.user;</span>
-<span class="cstat-no" title="statement not covered" >  }</span>
+    const response = await registerUserApi(data);
+    setCookie('accessToken', response.accessToken);
+    localStorage.setItem('refreshToken', response.refreshToken);
+    return response.user;
+  }
 );
 &nbsp;
 export const loginUserThunk = createAsyncThunk(
   'user/login',
   async (data: TLoginData) =&gt; {
-<span class="cstat-no" title="statement not covered" >    const response = await loginUserApi(data);</span>
-<span class="cstat-no" title="statement not covered" >    setCookie('accessToken', response.accessToken);</span>
-<span class="cstat-no" title="statement not covered" >    localStorage.setItem('refreshToken', response.refreshToken);</span>
-<span class="cstat-no" title="statement not covered" >    return response.user;</span>
-<span class="cstat-no" title="statement not covered" >  }</span>
+    const response = await loginUserApi(data);
+    setCookie('accessToken', response.accessToken);
+    localStorage.setItem('refreshToken', response.refreshToken);
+    return response.user;
+  }
 );
 &nbsp;
 export const getUserThunk = createAsyncThunk&lt;TUser&gt;(
   'user/getUser',
   async () =&gt; {
-<span class="cstat-no" title="statement not covered" >    const response = await getUserApi();</span>
-<span class="cstat-no" title="statement not covered" >    return response.user;</span>
-<span class="cstat-no" title="statement not covered" >  }</span>
+    const response = await getUserApi();
+    return response.user;
+  }
 );
 &nbsp;
 export const updateUserThunk = createAsyncThunk&lt;TUser, Partial&lt;TRegisterData&gt;&gt;(
   'user/updateUser',
   async (data) =&gt; {
-<span class="cstat-no" title="statement not covered" >    const response = await updateUserApi(data);</span>
-<span class="cstat-no" title="statement not covered" >    return response.user;</span>
-<span class="cstat-no" title="statement not covered" >  }</span>
+    const response = await updateUserApi(data);
+    return response.user;
+  }
 );
 &nbsp;
 export const logoutUserThunk = createAsyncThunk('user/logout', async () =&gt; {
-<span class="cstat-no" title="statement not covered" >  await logoutApi();</span>
+  await logoutApi();
 });
 &nbsp;
 export const forgotPasswordThunk = createAsyncThunk(
@@ -277,7 +277,7 @@ export const resetPasswordThunk = createAsyncThunk(
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-01-30T07:31:05.202Z
+                at 2026-01-30T08:18:50.303Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
