@@ -25,13 +25,58 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 //
-// declare global {
-//   namespace Cypress {
-//     interface Chainable {
-//       login(email: string, password: string): Chainable<void>
-//       drag(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
-//       dismiss(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
-//       visit(originalFn: CommandOriginalFn, url: string, options: Partial<VisitOptions>): Chainable<Element>
-//     }
-//   }
+Cypress.Commands.add('addItem', (item: string, locationSelector: string) => {
+  cy.get(locationSelector)
+    .contains(item)
+    .parent()
+    .contains('Добавить')
+    .click();
+});
+
+Cypress.Commands.add('clickItem', (item: string, locationSelector: string) => {
+  cy.get(locationSelector).contains(item).click();
+});
+
+Cypress.Commands.add('clickLocationForceTrue', (selector: string) => {
+  cy.get(selector).click({ force: true });
+});
+
+Cypress.Commands.add('clickLocation', (selector: string) => {
+  cy.get(selector).click();
+});
+
+Cypress.Commands.add('testExistItem', (item: string, locationSelector: string) => {
+  cy.get(locationSelector).contains(item).should('exist');
+});
+
+Cypress.Commands.add('testNotExistItem', (item: string, locationSelector: string) => {
+  cy.get(locationSelector).contains(item).should('not.exist');
+});
+
+Cypress.Commands.add('testExistLocation', (selector: string) => {
+  cy.get(selector).should('exist');
+});
+
+Cypress.Commands.add('testNotExistLocation', (selector: string) => {
+  cy.get(selector).should('not.exist');
+});
+
+Cypress.Commands.add('testIntercept', (intercept: string) => {
+  cy.wait(intercept).its('response.statusCode').should('eq', 200);
+});
+
+
+declare namespace Cypress {
+  interface Chainable {
+    addItem(item: string, locationSelector: string): Chainable<void>;
+    clickItem(item: string, locationSelector: string): Chainable<void>;
+    clickLocationForceTrue(selector: string): Chainable<void>;
+    clickLocation(selector: string): Chainable<void>;
+    testExistItem(item: string, locationSelector: string): Chainable<void>;
+    testNotExistItem(item: string, locationSelector: string): Chainable<void>;
+    testExistLocation(selector: string): Chainable<void>;
+    testNotExistLocation(selector: string): Chainable<void>;
+    testIntercept(intercept: string): Chainable<void>;
+  }
+}
 // }
