@@ -1,9 +1,8 @@
 // создать моковые данные
 
-import { add, get } from "cypress/types/lodash";
-import { addItem, clickItem, testExistItem, testNotExistItem, getItem, getItemForceTrue, testIntercept } from "./functionHelper";
-import { testBun, testIngredient, placeOrderButton, ingredientInfoModal, closeIcon, closeOverlay, orderNumber, bunPlaceholder, ingredientPlaceholder } from "./constHelper";
-
+import { add, find, get } from "cypress/types/lodash";
+import { testBun,testIngredient,placeOrderButton,ingredientInfoModal,selectCloseIconInModal,selectOverlayForModal,orderNumber,bunPlaceholder,ingredientPlaceholder,selectCurrentModal,selectBurgerConstructor,selectIngredients,selectIngredientNameInModal,selectIngredientCalories,selectIngredientProteins,selectIngredientFat,selectIngredientCarbs,testIngredientCalories,testIngredientProteins,testIngredientFat,testIngredientCarbs } from "./constHelper";
+import { addItem, clickItem, clickLocation, clickLocationForceTrue, testExistItem, testExistLocation, testIntercept, testNotExistItem, testNotExistLocation } from "./functionHelper";
 
 
 describe('Конструктор бургера', () => {
@@ -31,64 +30,76 @@ describe('Конструктор бургера', () => {
     cy.wait('@getIngredients');
   });
 
+    afterEach(() => {
+    cy.clearCookies();
+    cy.clearLocalStorage();
+  });
+
   it('тест - добавление ингредиента из списка в конструктор', () => {
-    addItem (testBun);
-    testExistItem (testBun);
+    addItem (testBun, selectIngredients);
+    testExistItem (testBun, selectBurgerConstructor);
   });
 
   it('тест - модалки - открытие модального окна ингредиента', () => {
-    clickItem(testIngredient);
-    testExistItem (ingredientInfoModal);
+    clickItem(testIngredient, selectIngredients);
+    testExistLocation (selectCurrentModal);
+    testExistItem (ingredientInfoModal, selectCurrentModal);
+    testExistItem (testIngredientCalories, selectCurrentModal);
+    testExistItem (testIngredientProteins, selectCurrentModal);
+    testExistItem (testIngredientFat, selectCurrentModal);
+    testExistItem (testIngredientCarbs, selectCurrentModal);
+
+
   });
 
   it('тест - модалки - закрытие по клику на крестик', () => {
-    clickItem(testIngredient);
-    getItem(closeIcon);
-    testNotExistItem (ingredientInfoModal);
+    clickItem(testIngredient, selectIngredients);
+    clickLocation (selectCloseIconInModal);
+    testNotExistLocation (selectCurrentModal);
   });
 
   it('тест - модалки - закрытие по клику на оверлей (желательно)', () => {
-    clickItem(testIngredient);
-    getItemForceTrue(closeOverlay);
-    testNotExistItem (ingredientInfoModal);
+    clickItem(testIngredient, selectIngredients);
+    clickLocationForceTrue (selectOverlayForModal);
+     testNotExistLocation (selectCurrentModal);
   });
 
   it('тест - заказ - cобирается бургер', () => {
-  addItem (testBun);
-  testExistItem (testBun);
-  addItem (testIngredient);
-  testExistItem (testIngredient);
+  addItem (testBun, selectIngredients);
+  testExistItem (testBun, selectBurgerConstructor);
+  addItem (testIngredient, selectIngredients);
+  testExistItem (testIngredient, selectBurgerConstructor);
   });
 
     it('тест - заказ - отправлен заказ', function () {
-    addItem (testBun);
-    addItem (testIngredient);
-    clickItem(placeOrderButton);
+    addItem (testBun, selectIngredients);
+    addItem (testIngredient, selectIngredients);
+    clickItem(placeOrderButton, selectBurgerConstructor);
     testIntercept('@createOrder');
 });
 
   it('тест - заказ - проверяется, что модальное окно открылось и номер заказа верный', () => {
-    addItem (testBun);
-    addItem (testIngredient);
-    clickItem(placeOrderButton);
-    testExistItem(orderNumber);
+    addItem (testBun, selectIngredients);
+    addItem (testIngredient, selectIngredients);
+    clickItem(placeOrderButton, selectBurgerConstructor);
+    testExistItem(orderNumber, selectCurrentModal);
   });
 
   it('тест - заказ - закрывается модальное окно и проверяется успешность закрытия.', () => {
-    addItem (testBun);
-    addItem (testIngredient);
-    clickItem(placeOrderButton);
-    getItem(closeIcon);
-    testNotExistItem(orderNumber);
+    addItem (testBun, selectIngredients);
+    addItem (testIngredient, selectIngredients);
+    clickItem(placeOrderButton, selectBurgerConstructor);
+    clickLocation (selectCloseIconInModal);
+    testNotExistLocation (selectCurrentModal);;
   });
 
   it('тест - заказ - проверяется, что конструктор пуст.', () => {
-    addItem (testBun);
-    addItem (testIngredient);
-    clickItem(placeOrderButton);
-    getItem(closeIcon);
-    testExistItem(bunPlaceholder);
-    testExistItem(ingredientPlaceholder);
+    addItem (testBun, selectIngredients);
+    addItem (testIngredient, selectIngredients);
+    clickItem(placeOrderButton, selectBurgerConstructor);
+    clickLocation (selectCloseIconInModal);
+    testExistItem (bunPlaceholder, selectBurgerConstructor);
+    testExistItem (ingredientPlaceholder, selectBurgerConstructor);
   });
 
 });

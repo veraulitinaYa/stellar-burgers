@@ -6,7 +6,7 @@ import {
   useSelector as selectorHook
 } from 'react-redux';
 
-import { rootReducer }from './root-reducer';
+import { rootReducer } from './root-reducer';
 
 //перенесла rootReducer в отдельный файл
 

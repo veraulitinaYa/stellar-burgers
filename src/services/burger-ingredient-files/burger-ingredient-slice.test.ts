@@ -1,11 +1,12 @@
-import { burgerIngredientReducer, initialState } from './burger-ingredient-slice';
+import {
+  burgerIngredientReducer,
+  initialState
+} from './burger-ingredient-slice';
 import { fetchIngredientThunk } from './burger-ingredient-thunk';
 import { TIngredient } from '@utils-types';
 import { ingredientsMock } from './burger-ingredient-mock';
 
 describe('Тест - редюсер burgerIngredient', () => {
-  
-
   it('возвращает начальное состояние', () => {
     const result = burgerIngredientReducer(undefined, { type: '' });
     expect(result).toEqual(initialState);

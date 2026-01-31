@@ -16,7 +16,9 @@ describe('Тест - редюсер user', () => {
 
   // --- registerUserThunk ---
   it('обрабатывает registerUserThunk.pending', () => {
-    const state = userReducer(initialState, { type: registerUserThunk.pending.type });
+    const state = userReducer(initialState, {
+      type: registerUserThunk.pending.type
+    });
     expect(state.isLoading).toBe(true);
     expect(state.error).toBeNull();
   });
@@ -43,7 +45,9 @@ describe('Тест - редюсер user', () => {
   });
 
   it('обрабатывает loginUserThunk.pending', () => {
-    const state = userReducer(initialState, { type: loginUserThunk.pending.type });
+    const state = userReducer(initialState, {
+      type: loginUserThunk.pending.type
+    });
     expect(state.isLoading).toBe(true);
     expect(state.error).toBeNull();
   });
@@ -70,7 +74,9 @@ describe('Тест - редюсер user', () => {
   });
 
   it('обрабатывает getUserThunk.pending', () => {
-    const state = userReducer(initialState, { type: getUserThunk.pending.type });
+    const state = userReducer(initialState, {
+      type: getUserThunk.pending.type
+    });
     expect(state.isLoading).toBe(true);
   });
 
@@ -86,14 +92,18 @@ describe('Тест - редюсер user', () => {
   });
 
   it('обрабатывает getUserThunk.rejected', () => {
-    const state = userReducer(initialState, { type: getUserThunk.rejected.type });
+    const state = userReducer(initialState, {
+      type: getUserThunk.rejected.type
+    });
     expect(state.isLoading).toBe(false);
     expect(state.user).toBeNull();
     expect(state.isAuthChecked).toBe(true);
   });
 
-   it('обрабатывает updateUserThunk.pending', () => {
-    const state = userReducer(initialState, { type: updateUserThunk.pending.type });
+  it('обрабатывает updateUserThunk.pending', () => {
+    const state = userReducer(initialState, {
+      type: updateUserThunk.pending.type
+    });
     expect(state.isLoading).toBe(true);
     expect(state.error).toBeNull();
   });
@@ -120,7 +130,9 @@ describe('Тест - редюсер user', () => {
 
   it('обрабатывает logoutUserThunk.fulfilled', () => {
     const stateWithUser = { ...initialState, user: userMock };
-    const state = userReducer(stateWithUser, { type: logoutUserThunk.fulfilled.type });
+    const state = userReducer(stateWithUser, {
+      type: logoutUserThunk.fulfilled.type
+    });
     expect(state.user).toBeNull();
     expect(state.isAuthChecked).toBe(true);
   });

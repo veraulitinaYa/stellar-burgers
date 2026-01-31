@@ -48,10 +48,7 @@ describe('Тест - редюсер burgerConstructor', () => {
   });
 
   it('добавляет булку', () => {
-    const state = burgerConstructorReducer(
-      initialState,
-      addIngredient(bun)
-    );
+    const state = burgerConstructorReducer(initialState, addIngredient(bun));
 
     expect(state.bun).toEqual({
       ...bun,
@@ -76,9 +73,7 @@ describe('Тест - редюсер burgerConstructor', () => {
   it('удаляет ингредиент по id', () => {
     const filledState = {
       bun: null,
-      ingredients: [
-        { ...ingredient, id: 'remove-me' }
-      ]
+      ingredients: [{ ...ingredient, id: 'remove-me' }]
     };
 
     const state = burgerConstructorReducer(
@@ -113,10 +108,7 @@ describe('Тест - редюсер burgerConstructor', () => {
       ingredients: [{ ...ingredient, id: 'ing-id' }]
     };
 
-    const state = burgerConstructorReducer(
-      filledState,
-      clearConstructor()
-    );
+    const state = burgerConstructorReducer(filledState, clearConstructor());
 
     expect(state).toEqual(initialState);
   });

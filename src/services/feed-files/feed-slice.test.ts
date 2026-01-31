@@ -8,9 +8,10 @@ describe('Тест - редюсер feed', () => {
     expect(state).toEqual(initialState);
   });
 
-  
   it('обрабатывает fetchFeedThunk.pending', () => {
-    const state = feedReducer(initialState, { type: fetchFeedThunk.pending.type });
+    const state = feedReducer(initialState, {
+      type: fetchFeedThunk.pending.type
+    });
     expect(state.isLoading).toBe(true);
     expect(state.error).toBeNull();
   });
@@ -40,7 +41,9 @@ describe('Тест - редюсер feed', () => {
   });
 
   it('обрабатывает getFeedOrderByNumberThunk.pending', () => {
-    const state = feedReducer(initialState, { type: getFeedOrderByNumberThunk.pending.type });
+    const state = feedReducer(initialState, {
+      type: getFeedOrderByNumberThunk.pending.type
+    });
     expect(state.isLoading).toBe(true);
     expect(state.error).toBeNull();
   });

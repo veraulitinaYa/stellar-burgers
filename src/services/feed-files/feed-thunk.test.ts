@@ -28,7 +28,10 @@ describe('Тест - тханки для feed', () => {
     await thunk(dispatch, getState, undefined);
 
     expect(dispatch).toHaveBeenCalledWith(
-      expect.objectContaining({ type: fetchFeedThunk.fulfilled.type, payload: feedApiResponseMock })
+      expect.objectContaining({
+        type: fetchFeedThunk.fulfilled.type,
+        payload: feedApiResponseMock
+      })
     );
   });
 
@@ -39,12 +42,17 @@ describe('Тест - тханки для feed', () => {
     await thunk(dispatch, getState, undefined);
 
     expect(dispatch).toHaveBeenCalledWith(
-      expect.objectContaining({ type: fetchFeedThunk.rejected.type, error: expect.objectContaining({ message: 'Ошибка API' }) })
+      expect.objectContaining({
+        type: fetchFeedThunk.rejected.type,
+        error: expect.objectContaining({ message: 'Ошибка API' })
+      })
     );
   });
 
- it('диспатчит pending для getFeedOrderByNumberThunk', async () => {
-    (getOrderByNumberApi as jest.Mock).mockResolvedValue({ orders: [feedOrdersMock[0]] });
+  it('диспатчит pending для getFeedOrderByNumberThunk', async () => {
+    (getOrderByNumberApi as jest.Mock).mockResolvedValue({
+      orders: [feedOrdersMock[0]]
+    });
 
     const thunk = getFeedOrderByNumberThunk(101);
     await thunk(dispatch, getState, undefined);
@@ -54,19 +62,26 @@ describe('Тест - тханки для feed', () => {
     );
   });
 
-    it('диспатчит fulfilled для getFeedOrderByNumberThunk', async () => {
-    (getOrderByNumberApi as jest.Mock).mockResolvedValue({ orders: [feedOrdersMock[0]] });
+  it('диспатчит fulfilled для getFeedOrderByNumberThunk', async () => {
+    (getOrderByNumberApi as jest.Mock).mockResolvedValue({
+      orders: [feedOrdersMock[0]]
+    });
 
     const thunk = getFeedOrderByNumberThunk(101);
     await thunk(dispatch, getState, undefined);
 
     expect(dispatch).toHaveBeenCalledWith(
-      expect.objectContaining({ type: getFeedOrderByNumberThunk.fulfilled.type, payload: [feedOrdersMock[0]] })
+      expect.objectContaining({
+        type: getFeedOrderByNumberThunk.fulfilled.type,
+        payload: [feedOrdersMock[0]]
+      })
     );
   });
 
   it('диспатчит rejected для getFeedOrderByNumberThunk', async () => {
-    (getOrderByNumberApi as jest.Mock).mockRejectedValue(new Error('Ошибка API'));
+    (getOrderByNumberApi as jest.Mock).mockRejectedValue(
+      new Error('Ошибка API')
+    );
 
     const thunk = getFeedOrderByNumberThunk(101);
     await thunk(dispatch, getState, undefined);

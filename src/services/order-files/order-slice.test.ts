@@ -1,6 +1,18 @@
-import { orderReducer, initialState, resetModalForNewOrder } from './order-slice';
-import { fetchOrdersThunk, createOrderThunk, getOrderByNumberThunk } from './order-thunks';
-import { ordersMock, createOrderResponseMock, getOrderByNumberResponseMock } from './order-mock'
+import {
+  orderReducer,
+  initialState,
+  resetModalForNewOrder
+} from './order-slice';
+import {
+  fetchOrdersThunk,
+  createOrderThunk,
+  getOrderByNumberThunk
+} from './order-thunks';
+import {
+  ordersMock,
+  createOrderResponseMock,
+  getOrderByNumberResponseMock
+} from './order-mock';
 
 describe('Тест - редюсер order', () => {
   it('should return initial state', () => {
@@ -9,7 +21,9 @@ describe('Тест - редюсер order', () => {
   });
 
   it('обрабатывает  createOrderThunk.pending', () => {
-    const state = orderReducer(initialState, { type: createOrderThunk.pending.type });
+    const state = orderReducer(initialState, {
+      type: createOrderThunk.pending.type
+    });
     expect(state.isOrderRequestSending).toBe(true);
     expect(state.isLoading).toBe(true);
     expect(state.error).toBeNull();
@@ -23,7 +37,9 @@ describe('Тест - редюсер order', () => {
 
     expect(state.isOrderRequestSending).toBe(false);
     expect(state.isLoading).toBe(false);
-    expect(state.currentOrderToShowinModal).toEqual(createOrderResponseMock.order);
+    expect(state.currentOrderToShowinModal).toEqual(
+      createOrderResponseMock.order
+    );
   });
 
   it('обрабатывает createOrderThunk.rejected', () => {
@@ -38,7 +54,9 @@ describe('Тест - редюсер order', () => {
   });
 
   it('обрабатывает fetchOrdersThunk.pending', () => {
-    const state = orderReducer(initialState, { type: fetchOrdersThunk.pending.type });
+    const state = orderReducer(initialState, {
+      type: fetchOrdersThunk.pending.type
+    });
     expect(state.isLoading).toBe(true);
     expect(state.error).toBeNull();
   });
@@ -64,7 +82,9 @@ describe('Тест - редюсер order', () => {
   });
 
   it('обрабатывает getOrderByNumberThunk.pending', () => {
-    const state = orderReducer(initialState, { type: getOrderByNumberThunk.pending.type });
+    const state = orderReducer(initialState, {
+      type: getOrderByNumberThunk.pending.type
+    });
     expect(state.isLoading).toBe(true);
     expect(state.error).toBeNull();
   });
@@ -76,7 +96,9 @@ describe('Тест - редюсер order', () => {
     });
 
     expect(state.isLoading).toBe(false);
-    expect(state.currentOrderToShowinModal).toEqual(getOrderByNumberResponseMock.orders[0]);
+    expect(state.currentOrderToShowinModal).toEqual(
+      getOrderByNumberResponseMock.orders[0]
+    );
   });
 
   it('обрабатывает getOrderByNumberThunk.rejected', () => {
@@ -89,8 +111,11 @@ describe('Тест - редюсер order', () => {
     expect(state.error).toBe('Ошибка API');
   });
 
-  it('сбрасывает модалку для нового заказа', () =>  {
-    const stateWithOrder = { ...initialState, currentOrderToShowinModal: ordersMock[0] };
+  it('сбрасывает модалку для нового заказа', () => {
+    const stateWithOrder = {
+      ...initialState,
+      currentOrderToShowinModal: ordersMock[0]
+    };
     const state = orderReducer(stateWithOrder, resetModalForNewOrder());
     expect(state.currentOrderToShowinModal).toBeNull();
   });

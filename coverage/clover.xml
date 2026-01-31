@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1769761130369" clover="3.2.0">
-  <project timestamp="1769761130369" name="All files">
-    <metrics statements="927" coveredstatements="713" conditionals="76" coveredconditionals="64" methods="28" coveredmethods="11" elements="1031" coveredelements="788" complexity="0" loc="927" ncloc="927" packages="7" files="17" classes="17"/>
+<coverage generated="1769848623579" clover="3.2.0">
+  <project timestamp="1769848623579" name="All files">
+    <metrics statements="955" coveredstatements="741" conditionals="76" coveredconditionals="64" methods="29" coveredmethods="11" elements="1060" coveredelements="816" complexity="0" loc="955" ncloc="955" packages="7" files="18" classes="18"/>
     <package name="services">
-      <metrics statements="19" coveredstatements="19" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <metrics statements="47" coveredstatements="47" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
       <file name="root-reducer.ts" path="C:\Users\verau\Desktop\Projects\stellar-burgers\src\services\root-reducer.ts">
         <metrics statements="14" coveredstatements="14" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
@@ -28,6 +28,37 @@
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
+      </file>
+      <file name="store.ts" path="C:\Users\verau\Desktop\Projects\stellar-burgers\src\services\store.ts">
+        <metrics statements="28" coveredstatements="28" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
+        <line num="27" count="1" type="stmt"/>
+        <line num="28" count="1" type="stmt"/>
       </file>
     </package>
     <package name="services.burger-constructor-files">

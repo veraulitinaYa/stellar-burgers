@@ -36,7 +36,9 @@ describe('Тест - тханик для user', () => {
     const thunk = registerUserThunk({ email: 'a', password: 'b', name: 'c' });
     await thunk(dispatch, getState, undefined);
 
-    expect(dispatch).toHaveBeenCalledWith(expect.objectContaining({ type: registerUserThunk.pending.type }));
+    expect(dispatch).toHaveBeenCalledWith(
+      expect.objectContaining({ type: registerUserThunk.pending.type })
+    );
   });
 
   it('диспатчит fulfilled для registerUserThunk', async () => {
@@ -44,108 +46,138 @@ describe('Тест - тханик для user', () => {
     const thunk = registerUserThunk({ email: 'a', password: 'b', name: 'c' });
     await thunk(dispatch, getState, undefined);
 
-    expect(dispatch).toHaveBeenCalledWith(expect.objectContaining({
-      type: registerUserThunk.fulfilled.type,
-      payload: userMock
-    }));
+    expect(dispatch).toHaveBeenCalledWith(
+      expect.objectContaining({
+        type: registerUserThunk.fulfilled.type,
+        payload: userMock
+      })
+    );
   });
 
   it('диспатчит rejected для registerUserThunk', async () => {
-    (registerUserApi as jest.Mock).mockRejectedValue(new Error('Ошибка регистрации'));
+    (registerUserApi as jest.Mock).mockRejectedValue(
+      new Error('Ошибка регистрации')
+    );
     const thunk = registerUserThunk({ email: 'a', password: 'b', name: 'c' });
     await thunk(dispatch, getState, undefined);
 
-    expect(dispatch).toHaveBeenCalledWith(expect.objectContaining({
-      type: registerUserThunk.rejected.type,
-      error: expect.objectContaining({ message: 'Ошибка регистрации' })
-    }));
+    expect(dispatch).toHaveBeenCalledWith(
+      expect.objectContaining({
+        type: registerUserThunk.rejected.type,
+        error: expect.objectContaining({ message: 'Ошибка регистрации' })
+      })
+    );
   });
 
   it('диспатчит pending для loginUserThunk', async () => {
     (loginUserApi as jest.Mock).mockResolvedValue(loginResponseMock);
     const thunk = loginUserThunk({ email: 'a', password: 'b' });
     await thunk(dispatch, getState, undefined);
-    expect(dispatch).toHaveBeenCalledWith(expect.objectContaining({ type: loginUserThunk.pending.type }));
+    expect(dispatch).toHaveBeenCalledWith(
+      expect.objectContaining({ type: loginUserThunk.pending.type })
+    );
   });
 
   it('диспатчит fulfilled для loginUserThunk', async () => {
     (loginUserApi as jest.Mock).mockResolvedValue(loginResponseMock);
     const thunk = loginUserThunk({ email: 'a', password: 'b' });
     await thunk(dispatch, getState, undefined);
-    expect(dispatch).toHaveBeenCalledWith(expect.objectContaining({
-      type: loginUserThunk.fulfilled.type,
-      payload: userMock
-    }));
+    expect(dispatch).toHaveBeenCalledWith(
+      expect.objectContaining({
+        type: loginUserThunk.fulfilled.type,
+        payload: userMock
+      })
+    );
   });
 
   it('диспатчит rejected для loginUserThunk', async () => {
-    (loginUserApi as jest.Mock).mockRejectedValue(new Error('Ошибка авторизации'));
+    (loginUserApi as jest.Mock).mockRejectedValue(
+      new Error('Ошибка авторизации')
+    );
     const thunk = loginUserThunk({ email: 'a', password: 'b' });
     await thunk(dispatch, getState, undefined);
-    expect(dispatch).toHaveBeenCalledWith(expect.objectContaining({
-      type: loginUserThunk.rejected.type,
-      error: expect.objectContaining({ message: 'Ошибка авторизации' })
-    }));
+    expect(dispatch).toHaveBeenCalledWith(
+      expect.objectContaining({
+        type: loginUserThunk.rejected.type,
+        error: expect.objectContaining({ message: 'Ошибка авторизации' })
+      })
+    );
   });
 
   it('диспатчит pending для getUserThunk', async () => {
     (getUserApi as jest.Mock).mockResolvedValue(getUserResponseMock);
     const thunk = getUserThunk();
     await thunk(dispatch, getState, undefined);
-    expect(dispatch).toHaveBeenCalledWith(expect.objectContaining({ type: getUserThunk.pending.type }));
+    expect(dispatch).toHaveBeenCalledWith(
+      expect.objectContaining({ type: getUserThunk.pending.type })
+    );
   });
 
   it('диспатчит fulfilled для getUserThunk', async () => {
     (getUserApi as jest.Mock).mockResolvedValue(getUserResponseMock);
     const thunk = getUserThunk();
     await thunk(dispatch, getState, undefined);
-    expect(dispatch).toHaveBeenCalledWith(expect.objectContaining({
-      type: getUserThunk.fulfilled.type,
-      payload: userMock
-    }));
+    expect(dispatch).toHaveBeenCalledWith(
+      expect.objectContaining({
+        type: getUserThunk.fulfilled.type,
+        payload: userMock
+      })
+    );
   });
 
   it('диспатчит rejected для getUserThunk', async () => {
     (getUserApi as jest.Mock).mockRejectedValue(new Error('Ошибка API'));
     const thunk = getUserThunk();
     await thunk(dispatch, getState, undefined);
-    expect(dispatch).toHaveBeenCalledWith(expect.objectContaining({
-      type: getUserThunk.rejected.type,
-      error: expect.objectContaining({ message: 'Ошибка API' })
-    }));
+    expect(dispatch).toHaveBeenCalledWith(
+      expect.objectContaining({
+        type: getUserThunk.rejected.type,
+        error: expect.objectContaining({ message: 'Ошибка API' })
+      })
+    );
   });
 
   it('диспатчит pending для updateUserThunk', async () => {
     (updateUserApi as jest.Mock).mockResolvedValue(updateUserResponseMock);
     const thunk = updateUserThunk({ name: 'Обновлённый' });
     await thunk(dispatch, getState, undefined);
-    expect(dispatch).toHaveBeenCalledWith(expect.objectContaining({ type: updateUserThunk.pending.type }));
+    expect(dispatch).toHaveBeenCalledWith(
+      expect.objectContaining({ type: updateUserThunk.pending.type })
+    );
   });
 
   it('диспатчит fulfilled для updateUserThunk', async () => {
     (updateUserApi as jest.Mock).mockResolvedValue(updateUserResponseMock);
     const thunk = updateUserThunk({ name: 'Обновлённый' });
     await thunk(dispatch, getState, undefined);
-    expect(dispatch).toHaveBeenCalledWith(expect.objectContaining({
-      type: updateUserThunk.fulfilled.type,
-      payload: updateUserResponseMock.user
-    }));
+    expect(dispatch).toHaveBeenCalledWith(
+      expect.objectContaining({
+        type: updateUserThunk.fulfilled.type,
+        payload: updateUserResponseMock.user
+      })
+    );
   });
 
   it('диспатчит rejected для updateUserThunk', async () => {
-    (updateUserApi as jest.Mock).mockRejectedValue(new Error('Ошибка обновления профиля'));
+    (updateUserApi as jest.Mock).mockRejectedValue(
+      new Error('Ошибка обновления профиля')
+    );
     const thunk = updateUserThunk({ name: 'Обновлённый' });
     await thunk(dispatch, getState, undefined);
-    expect(dispatch).toHaveBeenCalledWith(expect.objectContaining({
-      type: updateUserThunk.rejected.type,
-      error: expect.objectContaining({ message: 'Ошибка обновления профиля' })
-    }));
+    expect(dispatch).toHaveBeenCalledWith(
+      expect.objectContaining({
+        type: updateUserThunk.rejected.type,
+        error: expect.objectContaining({ message: 'Ошибка обновления профиля' })
+      })
+    );
   });
 
   it('диспатчит fulfilled для logoutUserThunk', async () => {
     (logoutApi as jest.Mock).mockResolvedValue(undefined);
     const thunk = logoutUserThunk();
     await thunk(dispatch, getState, undefined);
-    expect(dispatch).toHaveBeenCalledWith(expect.objectContaining({ type: logoutUserThunk.fulfilled.type }));
+    expect(dispatch).toHaveBeenCalledWith(
+      expect.objectContaining({ type: logoutUserThunk.fulfilled.type })
+    );
   });
 });
