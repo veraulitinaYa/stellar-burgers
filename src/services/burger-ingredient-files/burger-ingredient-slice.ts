@@ -12,7 +12,7 @@ export interface BurgerIngredientState {
 }
 
 //начальное состояние
-const initialState: BurgerIngredientState = {
+export const initialState: BurgerIngredientState = {
   ingredients: [],
   isLoading: false,
   isFetched: false,
